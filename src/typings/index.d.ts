@@ -11,3 +11,17 @@ export interface Winner {
 export interface State {
     [key: string]: any
 }
+
+export type Mode = 'easyMode' | 'normalMode' | 'hardMode'
+
+export type Difficulty = {
+    [key in Mode]: {
+        field: number;
+        delay: number
+    };
+};
+
+export interface Option {
+    label: string,
+    value: string
+}
