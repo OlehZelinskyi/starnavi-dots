@@ -1,11 +1,13 @@
-import { AnyAction } from "redux"
-
 // Types
 import { State } from "../../typings"
-import { RECEIVE_DATA } from "../constants"
+import { AnyAction } from "redux"
+
+// Constants
+import { RECEIVE_DATA, WINNERS, GAME_SETTINGS } from "../constants"
 
 const initialState: State = {
-    winners: null
+    [WINNERS]: null,
+    [GAME_SETTINGS]: null
 }
 
 export default (state = initialState, action: AnyAction) => {

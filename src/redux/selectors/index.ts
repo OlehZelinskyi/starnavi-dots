@@ -1,6 +1,14 @@
+// Types
 import { State } from "../../typings";
-import { WINNERS, DATA_PREFIX, SETTINGS_PREFIX, SELECTED_OPTION, GAME_ON } from "../constants";
 
+// Constants
+import { WINNERS, DATA_PREFIX, SETTINGS_PREFIX, SELECTED_OPTION, GAME_ON, GAME_SETTINGS, DIFFICULTY } from "../constants";
+
+// Data selectors
 export const winners$ = (state: State) => state[DATA_PREFIX][WINNERS];
+export const gameSettings$ = (state: State) => state[DATA_PREFIX][GAME_SETTINGS];
+
+// Settings selectors
 export const selectedOption$ = (state: State) => state[SETTINGS_PREFIX][SELECTED_OPTION];
 export const gameOn$ = (state: State) => state[SETTINGS_PREFIX][GAME_ON];
+export const difficulty$ = (state: State) => state[SETTINGS_PREFIX][DIFFICULTY]

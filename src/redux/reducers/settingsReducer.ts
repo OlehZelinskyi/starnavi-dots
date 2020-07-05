@@ -2,31 +2,33 @@ import { AnyAction } from "redux"
 
 // Types
 import { State } from "../../typings"
-import { SET_SELECTED_OPTION, DEFAULT_OPTION, SET_USERNAME, START_GAME } from "../constants"
+
+// Constants
+import { SET_USERNAME, START_GAME, SET_DIFFICULTY, DIFFICULTY, USERNAME, GAME_ON } from "../constants"
 
 const initialState: State = {
-    selectedOption: DEFAULT_OPTION,
-    username: '',
-    gameOn: false
+    [DIFFICULTY]: null,
+    [USERNAME]: '',
+    [GAME_ON]: false
 }
 
 export default (state = initialState, action: AnyAction) => {
     const { type, payload } = action
     switch (type) {
-        case SET_SELECTED_OPTION:
+        case SET_DIFFICULTY:
             return {
                 ...state,
-                selectedOption: payload
+                [DIFFICULTY]: payload
             }
         case SET_USERNAME:
             return {
                 ...state,
-                username: payload
+                [USERNAME]: payload
             }
         case START_GAME:
             return {
                 ...state,
-                gameOn: true
+                [GAME_ON]: true
             }
         default: return state
     }

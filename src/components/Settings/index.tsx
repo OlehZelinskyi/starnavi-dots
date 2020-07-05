@@ -1,18 +1,24 @@
 import React, { PureComponent, ChangeEvent } from "react";
 import Select from "react-select";
-import { Difficulty, Option, State as GlobalState } from "../../typings";
+import {
+  Difficulty,
+  Option,
+  State as GlobalState,
+  Mode,
+  Styles,
+} from "../../typings";
 import toNormalCase from "../../utils/toNormalCase";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { selectedOption$, gameOn$ } from "../../redux/selectors";
-import { setSelectedOption, setUsername, startGame } from "../../redux/actions";
+import { setDifficulty, setUsername, startGame } from "../../redux/actions";
 import Input from "../Input";
 import Button from "../Button";
+import { DEFAULT_OPTION } from "../../redux/constants";
 
 export interface Props {
   gameSettings: Difficulty;
-  setSelectedOption: (selectedOption: Option) => void;
-  selectedOption: Option;
+  setDifficulty: (difficulty: Mode) => void;
   setUsername: (username: string) => void;
   startGame: () => void;
   gameOn: boolean;
@@ -20,7 +26,35 @@ export interface Props {
 
 export interface State {
   username: string;
+  selectedOption: Option;
 }
+
+const styles: Styles = {
+  settingsWrapper: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  input: {
+    padding: "5px 10px",
+    background: "#eee",
+    fontSize: "14px",
+    border: "none",
+    fontFamily: "Arial",
+    color: "#777",
+    marginRight: 10,
+  },
+  button: {
+    background: "#555",
+    color: "#fff",
+    borderRadius: "3px",
+    padding: "5px 20px",
+    border: "none",
+  },
+  selectWrapper: {
+    width: 200,
+    marginRight: 10,
+  },
+};
 
 class Settings extends PureComponent<Props, State> {
   constructor(props: Props) {
@@ -28,20 +62,26 @@ class Settings extends PureComponent<Props, State> {
 
     this.state = {
       username: "",
+      selectedOption: null,
     } as State;
   }
 
   render() {
-    const { selectedOption, gameOn } = this.props;
-    const { username } = this.state;
+    const { gameOn } = this.props;
+    const { username, selectedOption } = this.state;
+    const { settingsWrapper, input, selectWrapper, button } = styles;
+
     return (
-      <div>
-        <Select
-          value={selectedOption}
-          onChange={this.handleSelect}
-          options={this.getOptions()}
-          isDisabled={gameOn}
-        />
+      <div style={settingsWrapper}>
+        <div style={selectWrapper}>
+          <Select
+            value={selectedOption}
+            onChange={this.handleSelect}
+            options={this.getOptions()}
+            isDisabled={gameOn}
+          />
+        </div>
+
         <Input
           type={"text"}
           name={"username"}
@@ -50,12 +90,14 @@ class Settings extends PureComponent<Props, State> {
           handleChange={this.handleChange}
           handleBlur={this.handleBlur}
           disabled={gameOn}
+          styles={input}
         />
         <Button
-          disabled={gameOn || !username.length}
+          disabled={gameOn || !username.length || !selectedOption}
           label={"PLAY"}
           type={"button"}
           handleClick={this.handleClick}
+          styles={button}
         />
       </div>
     );
@@ -89,10 +131,10 @@ class Settings extends PureComponent<Props, State> {
   };
 
   private handleSelect = (selectedOption: Option) => {
-    const { setSelectedOption } = this.props;
-
-    if (typeof setSelectedOption === "function") {
-      setSelectedOption(selectedOption);
+    const { setDifficulty } = this.props;
+    this.setState({ selectedOption });
+    if (typeof setDifficulty === "function") {
+      setDifficulty(selectedOption.value as Mode);
     }
   };
 
@@ -111,12 +153,11 @@ class Settings extends PureComponent<Props, State> {
 }
 
 const mapStateToProps = (state: GlobalState) => ({
-  selectedOption: selectedOption$(state),
   gameOn: gameOn$(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSelectedOption: (option: Option) => dispatch(setSelectedOption(option)),
+  setDifficulty: (difficulty: Mode) => dispatch(setDifficulty(difficulty)),
   setUsername: (username: string) => dispatch(setUsername(username)),
   startGame: () => dispatch(startGame()),
 });

@@ -12,18 +12,19 @@ import rootReducer from "./rootReducer";
 import { State } from "./typings";
 
 // Constants
-import { DEFAULT_OPTION } from "./redux/constants";
+import { GAME_SETTINGS, WINNERS, DIFFICULTY, GAME_ON, USERNAME } from "./redux/constants";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const preloadedState: State = {
     dataReducer: {
-        winners: null
+        [WINNERS]: null,
+        [GAME_SETTINGS]: null
     },
     settingsReducer: {
-        selectedOption: DEFAULT_OPTION,
-        username: '',
-        gameOn: false
+        [DIFFICULTY]: null,
+        [USERNAME]: '',
+        [GAME_ON]: false
     }
 }
 

@@ -1,3 +1,4 @@
+// Constants
 import { baseURL } from "../constants"
 
 async function fetchApi(endPoint: string) {

@@ -1,7 +1,10 @@
+// Effects
 import { call, put } from "redux-saga/effects";
 
 // API Calls
 import { fetchApi } from "../api";
+
+// Actions
 import { receiveData } from "../actions";
 
 

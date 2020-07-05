@@ -1,16 +1,16 @@
-import { Winner, Option } from "../../typings";
-import { RECEIVE_DATA, SET_SELECTED_OPTION, SET_USERNAME, START_GAME } from "../constants";
+import { Winner, Option, Mode, Difficulty } from "../../typings";
+import { RECEIVE_DATA, SET_USERNAME, START_GAME, SET_DIFFICULTY } from "../constants";
 
-export const receiveData = (type: string, data: Winner[]) => ({
+export const receiveData = (type: string, data: Winner[] | Difficulty) => ({
     type: RECEIVE_DATA, payload: {
         type: type,
         data: data
     }
 })
 
-export const setSelectedOption = (option: Option) => ({
-    type: SET_SELECTED_OPTION,
-    payload: option
+export const setDifficulty = (difficulty: Mode) => ({
+    type: SET_DIFFICULTY,
+    payload: difficulty
 })
 
 export const setUsername = (username: string) => ({

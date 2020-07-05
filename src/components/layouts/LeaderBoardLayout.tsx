@@ -9,7 +9,7 @@ import LeaderBoard from "../LeaderBoard";
 // Styles
 const styles: Styles = {
   container: {
-    width: 320,
+    flexGrow: 1,
     display: "flex",
     border: "2px solid #ddd",
   },

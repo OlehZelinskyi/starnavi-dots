@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, CSSProperties } from "react";
 
 export interface Props {
   type: string;
@@ -8,6 +8,7 @@ export interface Props {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleBlur: () => void;
   disabled: boolean;
+  styles: CSSProperties;
 }
 
 const Input = (props: Props) => {
@@ -19,6 +20,7 @@ const Input = (props: Props) => {
     handleChange,
     handleBlur,
     disabled,
+    styles,
   } = props;
   return (
     <input
@@ -29,6 +31,7 @@ const Input = (props: Props) => {
       placeholder={placeholder}
       onChange={handleChange}
       onBlur={handleBlur}
+      style={styles}
     />
   );
 };

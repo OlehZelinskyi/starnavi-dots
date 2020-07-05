@@ -1,39 +1,39 @@
 import React from "react";
 
 // Types
-import { Styles } from "../../typings";
+import { Styles, Difficulty, Mode } from "../../typings";
+
+// Components
 import Settings from "../Settings";
+import WinnerMessage from "../WinnerMessage";
+import GameField from "../GameField";
 
 // Styles
 const styles: Styles = {
   container: {
-    width: 320,
+    flexGrow: 1,
     border: "2px solid #ddd",
   },
 };
 
-const GameLayout = () => {
+export interface Props {
+  settings: Difficulty;
+  difficulty: Mode;
+}
+
+const GameLayout = (props: Props) => {
   const { container } = styles;
+  const { settings, difficulty } = props;
+
   return (
     <div style={container}>
-      <Settings
-        gameSettings={{
-          easyMode: {
-            field: 5,
-            delay: 2000,
-          },
-          normalMode: {
-            field: 10,
-            delay: 1000,
-          },
-          hardMode: {
-            field: 15,
-            delay: 900,
-          },
-        }}
-      />
-      {/* <WinnerMessage />
-      <GameField /> */}
+      <Settings gameSettings={settings} />
+      {false && <WinnerMessage msg={"Someone win"} />}
+      {difficulty ? (
+        <GameField selectedDifficulty={settings[difficulty]} />
+      ) : (
+        <div>{"Please select difficulty mode!"}</div>
+      )}
     </div>
   );
 };
