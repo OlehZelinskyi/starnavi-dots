@@ -16,7 +16,8 @@ import {
     STATISTIC,
     BTN_NAME,
     GAME_WINNER,
-    WINNER
+    WINNER,
+    USERNAME
 } from "../constants";
 
 // Data selectors
@@ -26,6 +27,7 @@ export const gameSettings$ = (state: State) => state[DATA_PREFIX][GAME_SETTINGS]
 // Settings selectors
 export const selectedOption$ = (state: State) => state[SETTINGS_PREFIX][SELECTED_OPTION];
 export const difficulty$ = (state: State) => state[SETTINGS_PREFIX][DIFFICULTY];
+export const username$ = (state: State) => state[SETTINGS_PREFIX][USERNAME]
 
 // Game selectors
 export const gameOn$ = (state: State) => state[GAME_PREFIX][GAME_ON];

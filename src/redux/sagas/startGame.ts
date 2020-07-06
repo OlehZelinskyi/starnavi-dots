@@ -5,7 +5,7 @@ import { takeLatest, select, put, call } from 'redux-saga/effects'
 import { START_GAME } from '../constants'
 
 // Selectors
-import { difficulty$, fieldItems$, fieldsCount$, playerFieldsCount$, gameWinner$, fieldByIndex$ } from '../selectors'
+import { difficulty$, fieldItems$, fieldsCount$, playerFieldsCount$, gameWinner$, fieldByIndex$, username$ } from '../selectors'
 
 // Actions
 import { winner, activate, finishGame, resetState } from '../actions'
@@ -58,6 +58,6 @@ export function* handleStartGame() {
     const computerFieldsCount = yield select(playerFieldsCount$, 'computer')
     const userFieldsCount = yield select(playerFieldsCount$, 'user')
 
-    const gameWinner = userFieldsCount > computerFieldsCount ? 'user' : 'computer'
+    const gameWinner = userFieldsCount > computerFieldsCount ? yield select(username$) : 'Computer'
     yield put(finishGame(gameWinner))
 }
