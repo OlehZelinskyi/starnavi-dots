@@ -6,10 +6,12 @@ import { Styles, State, DifficultyItem, FieldItemConfig } from "../../typings";
 import { Dispatch } from "redux";
 import { fieldItems$ } from "../../redux/selectors";
 import { connect } from "react-redux";
+import { paintField } from "../../redux/actions";
 
 export interface Props {
   selectedDifficulty: DifficultyItem;
   fieldItems: FieldItemConfig;
+  paintField: (index: number) => void;
 }
 
 const styles: Styles = {
@@ -39,10 +41,10 @@ class GameField extends PureComponent<Props> {
   }
 
   private renderField = () => {
-    const { fieldItems: fieldItemsConfig } = this.props;
+    const { fieldItems: fieldItemsConfig, paintField } = this.props;
 
     return Object.values(fieldItemsConfig).map((itemConfig) => {
-      return <FieldItem {...itemConfig} />;
+      return <FieldItem {...itemConfig} handleClick={paintField} />;
     });
   };
 }
@@ -51,6 +53,8 @@ const mapStateToProps = (state: State) => ({
   fieldItems: fieldItems$(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => {};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  paintField: (index: number) => dispatch(paintField(index)),
+});
 
-export default connect(mapStateToProps, null)(GameField);
+export default connect(mapStateToProps, mapDispatchToProps)(GameField);

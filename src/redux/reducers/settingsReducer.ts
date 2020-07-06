@@ -4,7 +4,7 @@ import { AnyAction } from "redux"
 import { State } from "../../typings"
 
 // Constants
-import { SET_USERNAME, SET_DIFFICULTY, DIFFICULTY, USERNAME, STATISTIC } from "../constants"
+import { SET_USERNAME, SET_DIFFICULTY, DIFFICULTY, USERNAME } from "../constants"
 
 const initialState: State = {
     [DIFFICULTY]: null,

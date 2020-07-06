@@ -11,6 +11,7 @@ export interface Props {
   };
   winner: string;
   index: number;
+  handleClick: (index: number) => void;
 }
 
 const styles: Styles = {
@@ -24,10 +25,18 @@ const styles: Styles = {
 const FieldItem = (props: Props) => {
   const { fieldItem } = styles;
   const {
-    state: { color },
+    state: { color, pending },
+    clickable,
+    index,
+    handleClick,
   } = props;
 
-  return <div style={{ ...fieldItem, ...{ backgroundColor: color } }}></div>;
+  return (
+    <div
+      style={{ ...fieldItem, backgroundColor: color }}
+      onClick={clickable && pending ? () => handleClick(index) : () => {}}
+    ></div>
+  );
 };
 
 export default FieldItem;

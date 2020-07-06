@@ -5,17 +5,23 @@ import { takeLatest, select, put, call } from 'redux-saga/effects'
 import { START_GAME } from '../constants'
 
 // Selectors
-import { difficulty$, fieldItems$, fieldsCount$, playerFieldsCount$ } from '../selectors'
+import { difficulty$, fieldItems$, fieldsCount$, playerFieldsCount$, gameWinner$, fieldByIndex$ } from '../selectors'
 
 // Actions
-import { winner, activate, finishGame } from '../actions'
+import { winner, activate, finishGame, resetState } from '../actions'
 
 export function* watchStartGame() {
     yield takeLatest(START_GAME, handleStartGame)
 }
 
 export function* handleStartGame() {
-    const { delay: delayTime } = yield select(difficulty$)
+    const { delay: delayTime, field } = yield select(difficulty$)
+
+    const previousWinner = yield select(gameWinner$)
+    if (!!previousWinner) {
+        yield put(resetState(field))
+    }
+
     const fieldItems = yield select(fieldItems$)
     const fieldsCount = yield select(fieldsCount$)
 
@@ -33,8 +39,10 @@ export function* handleStartGame() {
         yield put(activate(index))
         // Delaying
         yield call(delay, delayTime)
-        // Computer wins
-        yield put(winner('computer', index))
+        const fieldWinner = yield select(fieldByIndex$, index)
+        if (!(fieldWinner === 'user')) {
+            yield put(winner('computer', index))
+        }
     }
 
     for (const index of fieldsOrder) {

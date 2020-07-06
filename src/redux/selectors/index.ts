@@ -13,7 +13,10 @@ import {
     GAME_PREFIX,
     FIELD_ITEMS,
     FIELDS_COUNT,
-    STATISTIC
+    STATISTIC,
+    BTN_NAME,
+    GAME_WINNER,
+    WINNER
 } from "../constants";
 
 // Data selectors
@@ -29,3 +32,6 @@ export const gameOn$ = (state: State) => state[GAME_PREFIX][GAME_ON];
 export const fieldItems$ = (state: State) => state[GAME_PREFIX][FIELD_ITEMS]
 export const fieldsCount$ = (state: State) => state[GAME_PREFIX][STATISTIC][FIELDS_COUNT]
 export const playerFieldsCount$ = (state: State, player: string) => state[GAME_PREFIX][STATISTIC][player]
+export const btnName$ = (state: State) => state[GAME_PREFIX][BTN_NAME]
+export const gameWinner$ = (state: State) => state[GAME_PREFIX][GAME_WINNER]
+export const fieldByIndex$ = (state: State, index: number) => state[GAME_PREFIX][FIELD_ITEMS][index][WINNER]

@@ -2,7 +2,19 @@
 import { AnyAction } from "redux";
 
 // Constants
-import { START_GAME, GAME_ON, SET_DIFFICULTY, FIELD_ITEMS, FIELD_WINNER, ACTIVATE, STATISTIC, FINISH_GAME, GAME_WINNER } from "../constants";
+import {
+  START_GAME,
+  GAME_ON,
+  SET_DIFFICULTY,
+  FIELD_ITEMS,
+  FIELD_WINNER,
+  ACTIVATE,
+  STATISTIC,
+  FINISH_GAME,
+  GAME_WINNER,
+  BTN_NAME,
+  RESET_STATE
+} from "../constants";
 
 
 // Types
@@ -12,7 +24,8 @@ const initialState: State = {
   [GAME_ON]: false,
   [FIELD_ITEMS]: null,
   [STATISTIC]: null,
-  [GAME_WINNER]: null
+  [GAME_WINNER]: null,
+  [BTN_NAME]: 'play'
 };
 
 export default (state = initialState, action: AnyAction) => {
@@ -24,15 +37,14 @@ export default (state = initialState, action: AnyAction) => {
         [GAME_ON]: true,
       };
     case FINISH_GAME:
-
       return {
         ...state,
         [GAME_ON]: false,
-        [GAME_WINNER]: payload
+        [GAME_WINNER]: payload,
+        [BTN_NAME]: 'play again'
       };
     case SET_DIFFICULTY:
       const { field } = payload;
-
       return {
         ...state,
         [FIELD_ITEMS]: getFieldItems(field as number),
@@ -79,6 +91,18 @@ export default (state = initialState, action: AnyAction) => {
           }
         }
       }
+    case RESET_STATE:
+      return {
+        ...state,
+        [GAME_WINNER]: null,
+        [FIELD_ITEMS]: getFieldItems(payload as number),
+        [STATISTIC]: {
+          fieldsCount: payload ** 2,
+          computer: 0,
+          user: 0
+        }
+      };
+
     default:
       return state;
   }

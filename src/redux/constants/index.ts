@@ -6,6 +6,8 @@ export const START_GAME = 'START_GAME'
 export const FIELD_WINNER = 'FIELD_WINNER'
 export const ACTIVATE = 'ACTIVATE'
 export const FINISH_GAME = 'FINISH_GAME'
+export const RESET_STATE = 'RESET_STATE'
+export const PAINT_FIELD = 'PAINT_FIELD'
 
 // URL
 export const baseURL = 'https://starnavi-frontend-test-task.herokuapp.com'
@@ -30,6 +32,8 @@ export const FIELD_ITEMS = 'fieldItems'
 export const FIELDS_COUNT = 'fieldsCount'
 export const GAME_WINNER = 'gameWinner'
 export const STATISTIC = 'statistic'
+export const BTN_NAME = 'btnName'
+export const WINNER = 'winner'
 
 
 // Default values

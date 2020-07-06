@@ -11,7 +11,7 @@ import {
 import toNormalCase from "../../utils/toNormalCase";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { selectedOption$, gameOn$ } from "../../redux/selectors";
+import { selectedOption$, gameOn$, btnName$ } from "../../redux/selectors";
 import { setDifficulty, setUsername, startGame } from "../../redux/actions";
 import Input from "../Input";
 import Button from "../Button";
@@ -22,6 +22,7 @@ export interface Props {
   setUsername: (username: string) => void;
   startGame: () => void;
   gameOn: boolean;
+  btnName: string;
 }
 
 export interface State {
@@ -67,7 +68,7 @@ class Settings extends PureComponent<Props, State> {
   }
 
   render() {
-    const { gameOn } = this.props;
+    const { gameOn, btnName } = this.props;
     const { username, selectedOption } = this.state;
     const { settingsWrapper, input, selectWrapper, button } = styles;
 
@@ -94,7 +95,7 @@ class Settings extends PureComponent<Props, State> {
         />
         <Button
           disabled={gameOn || !username.length || !selectedOption}
-          label={"PLAY"}
+          label={btnName}
           type={"button"}
           handleClick={this.handleClick}
           styles={button}
@@ -154,6 +155,7 @@ class Settings extends PureComponent<Props, State> {
 
 const mapStateToProps = (state: GlobalState) => ({
   gameOn: gameOn$(state),
+  btnName: btnName$(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
