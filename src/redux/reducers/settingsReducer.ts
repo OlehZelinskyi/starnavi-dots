@@ -4,7 +4,7 @@ import { AnyAction } from "redux"
 import { State } from "../../typings"
 
 // Constants
-import { SET_USERNAME, START_GAME, SET_DIFFICULTY, DIFFICULTY, USERNAME } from "../constants"
+import { SET_USERNAME, SET_DIFFICULTY, DIFFICULTY, USERNAME, STATISTIC } from "../constants"
 
 const initialState: State = {
     [DIFFICULTY]: null,
@@ -17,7 +17,7 @@ export default (state = initialState, action: AnyAction) => {
         case SET_DIFFICULTY:
             return {
                 ...state,
-                [DIFFICULTY]: payload
+                [DIFFICULTY]: payload,
             }
         case SET_USERNAME:
             return {

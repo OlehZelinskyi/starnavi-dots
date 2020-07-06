@@ -11,7 +11,9 @@ import {
     GAME_SETTINGS,
     DIFFICULTY,
     GAME_PREFIX,
-    FIELD_ITEMS
+    FIELD_ITEMS,
+    FIELDS_COUNT,
+    STATISTIC
 } from "../constants";
 
 // Data selectors
@@ -25,3 +27,5 @@ export const difficulty$ = (state: State) => state[SETTINGS_PREFIX][DIFFICULTY];
 // Game selectors
 export const gameOn$ = (state: State) => state[GAME_PREFIX][GAME_ON];
 export const fieldItems$ = (state: State) => state[GAME_PREFIX][FIELD_ITEMS]
+export const fieldsCount$ = (state: State) => state[GAME_PREFIX][STATISTIC][FIELDS_COUNT]
+export const playerFieldsCount$ = (state: State, player: string) => state[GAME_PREFIX][STATISTIC][player]

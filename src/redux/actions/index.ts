@@ -1,5 +1,5 @@
 import { Winner, Difficulty, DifficultyItem } from "../../typings";
-import { RECEIVE_DATA, SET_USERNAME, START_GAME, SET_DIFFICULTY } from "../constants";
+import { RECEIVE_DATA, SET_USERNAME, START_GAME, SET_DIFFICULTY, FIELD_WINNER, ACTIVATE, FINISH_GAME } from "../constants";
 
 export const receiveData = (type: string, data: Winner[] | Difficulty) => ({
     type: RECEIVE_DATA, payload: {
@@ -19,3 +19,21 @@ export const setUsername = (username: string) => ({
 })
 
 export const startGame = () => ({ type: START_GAME })
+
+export const winner = (fieldWinner: string, fieldIndex: number) => ({
+    type: FIELD_WINNER, payload: {
+        fieldWinner,
+        fieldIndex
+    }
+})
+
+export const activate = (index: number) => ({
+    type: ACTIVATE, payload: {
+        index
+    }
+})
+
+export const finishGame = (winner: string) => ({
+    type: FINISH_GAME,
+    payload: winner
+})
