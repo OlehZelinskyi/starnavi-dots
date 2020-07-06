@@ -10,16 +10,20 @@ export const baseURL = 'https://starnavi-frontend-test-task.herokuapp.com'
 // Prefixes
 export const DATA_PREFIX = 'dataReducer'
 export const SETTINGS_PREFIX = 'settingsReducer'
+export const GAME_PREFIX = 'gameReducer'
 
 // DataReducer properties
 export const WINNERS = 'winners'
 export const GAME_SETTINGS = 'game-settings'
 
 // SettingsReducer properties
-export const GAME_ON = 'gameOn'
 export const SELECTED_OPTION = 'selectedOption'
 export const DIFFICULTY = 'difficulty'
 export const USERNAME = 'username'
+
+// GameReducer properties
+export const GAME_ON = 'gameOn'
+export const FIELD_ITEMS = 'fieldItems'
 
 // Default values
 export const DEFAULT_OPTION = {

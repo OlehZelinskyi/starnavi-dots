@@ -10,7 +10,7 @@ export interface Props {
     color: string;
   };
   winner: string;
-  turn: number;
+  index: number;
 }
 
 const styles: Styles = {

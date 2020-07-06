@@ -1,7 +1,7 @@
 import React from "react";
 
 // Types
-import { Styles, Difficulty, Mode } from "../../typings";
+import { Styles, Difficulty, Mode, DifficultyItem } from "../../typings";
 
 // Components
 import Settings from "../Settings";
@@ -18,7 +18,7 @@ const styles: Styles = {
 
 export interface Props {
   settings: Difficulty;
-  difficulty: Mode;
+  difficulty: DifficultyItem;
 }
 
 const GameLayout = (props: Props) => {
@@ -30,7 +30,7 @@ const GameLayout = (props: Props) => {
       <Settings gameSettings={settings} />
       {false && <WinnerMessage msg={"Someone win"} />}
       {difficulty ? (
-        <GameField selectedDifficulty={settings[difficulty]} />
+        <GameField selectedDifficulty={difficulty} />
       ) : (
         <div>{"Please select difficulty mode!"}</div>
       )}

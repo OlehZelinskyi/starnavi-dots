@@ -14,14 +14,29 @@ export interface State {
 
 export type Mode = 'easyMode' | 'normalMode' | 'hardMode'
 
+export interface DifficultyItem {
+    field: number,
+    delay: number
+}
+
 export type Difficulty = {
-    [key in Mode]: {
-        field: number;
-        delay: number
-    };
+    [key in Mode]: DifficultyItem
 };
 
 export interface Option {
     label: string,
     value: string
+}
+
+export interface FieldItemConfig {
+    [i: number]: {
+        key: number,
+        clickable: boolean,
+        state: {
+            pending: boolean,
+            color: string,
+        },
+        winner: null | string,
+        index: number,
+    }
 }

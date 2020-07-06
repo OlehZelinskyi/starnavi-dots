@@ -1,4 +1,4 @@
-import { Winner, Option, Mode, Difficulty } from "../../typings";
+import { Winner, Difficulty, DifficultyItem } from "../../typings";
 import { RECEIVE_DATA, SET_USERNAME, START_GAME, SET_DIFFICULTY } from "../constants";
 
 export const receiveData = (type: string, data: Winner[] | Difficulty) => ({
@@ -8,7 +8,7 @@ export const receiveData = (type: string, data: Winner[] | Difficulty) => ({
     }
 })
 
-export const setDifficulty = (difficulty: Mode) => ({
+export const setDifficulty = (difficulty: DifficultyItem) => ({
     type: SET_DIFFICULTY,
     payload: difficulty
 })

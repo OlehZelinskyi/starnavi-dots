@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import { dataReducer, settingsReducer } from "./redux/reducers";
+import { dataReducer, settingsReducer, gameReducer } from "./redux/reducers";
 
-export default combineReducers({ dataReducer, settingsReducer });
+export default combineReducers({ dataReducer, settingsReducer, gameReducer });

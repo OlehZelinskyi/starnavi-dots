@@ -2,13 +2,14 @@ import React, { PureComponent } from "react";
 
 // Components
 import FieldItem from "./FieldItem";
-import { Styles } from "../../typings";
+import { Styles, State, DifficultyItem, FieldItemConfig } from "../../typings";
+import { Dispatch } from "redux";
+import { fieldItems$ } from "../../redux/selectors";
+import { connect } from "react-redux";
 
 export interface Props {
-  selectedDifficulty: {
-    field: number;
-    delay: number;
-  };
+  selectedDifficulty: DifficultyItem;
+  fieldItems: FieldItemConfig;
 }
 
 const styles: Styles = {
@@ -38,26 +39,18 @@ class GameField extends PureComponent<Props> {
   }
 
   private renderField = () => {
-    const {
-      selectedDifficulty: { field },
-    } = this.props;
+    const { fieldItems: fieldItemsConfig } = this.props;
 
-    const fieldItems: JSX.Element[] = [];
-
-    for (let i = 0; i < field ** 2; i++) {
-      fieldItems.push(
-        <FieldItem
-          key={i}
-          clickable={false}
-          state={{ pending: false, color: "transparent" }}
-          winner={null}
-          turn={i}
-        />
-      );
-    }
-
-    return fieldItems.map((item) => item);
+    return Object.values(fieldItemsConfig).map((itemConfig) => {
+      return <FieldItem {...itemConfig} />;
+    });
   };
 }
 
-export default GameField;
+const mapStateToProps = (state: State) => ({
+  fieldItems: fieldItems$(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => {};
+
+export default connect(mapStateToProps, null)(GameField);

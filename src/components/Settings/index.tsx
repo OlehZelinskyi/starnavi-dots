@@ -6,6 +6,7 @@ import {
   State as GlobalState,
   Mode,
   Styles,
+  DifficultyItem,
 } from "../../typings";
 import toNormalCase from "../../utils/toNormalCase";
 import { connect } from "react-redux";
@@ -14,11 +15,10 @@ import { selectedOption$, gameOn$ } from "../../redux/selectors";
 import { setDifficulty, setUsername, startGame } from "../../redux/actions";
 import Input from "../Input";
 import Button from "../Button";
-import { DEFAULT_OPTION } from "../../redux/constants";
 
 export interface Props {
   gameSettings: Difficulty;
-  setDifficulty: (difficulty: Mode) => void;
+  setDifficulty: (difficulty: DifficultyItem) => void;
   setUsername: (username: string) => void;
   startGame: () => void;
   gameOn: boolean;
@@ -131,10 +131,10 @@ class Settings extends PureComponent<Props, State> {
   };
 
   private handleSelect = (selectedOption: Option) => {
-    const { setDifficulty } = this.props;
+    const { setDifficulty, gameSettings } = this.props;
     this.setState({ selectedOption });
     if (typeof setDifficulty === "function") {
-      setDifficulty(selectedOption.value as Mode);
+      setDifficulty(gameSettings[selectedOption.value as Mode]);
     }
   };
 
@@ -157,7 +157,8 @@ const mapStateToProps = (state: GlobalState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setDifficulty: (difficulty: Mode) => dispatch(setDifficulty(difficulty)),
+  setDifficulty: (difficulty: DifficultyItem) =>
+    dispatch(setDifficulty(difficulty)),
   setUsername: (username: string) => dispatch(setUsername(username)),
   startGame: () => dispatch(startGame()),
 });

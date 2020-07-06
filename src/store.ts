@@ -12,7 +12,7 @@ import rootReducer from "./rootReducer";
 import { State } from "./typings";
 
 // Constants
-import { GAME_SETTINGS, WINNERS, DIFFICULTY, GAME_ON, USERNAME } from "./redux/constants";
+import { GAME_SETTINGS, WINNERS, DIFFICULTY, GAME_ON, USERNAME, FIELD_ITEMS } from "./redux/constants";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -24,7 +24,10 @@ const preloadedState: State = {
     settingsReducer: {
         [DIFFICULTY]: null,
         [USERNAME]: '',
-        [GAME_ON]: false
+    },
+    gameReducer: {
+        [GAME_ON]: false,
+        [FIELD_ITEMS]: null
     }
 }
 

@@ -5,7 +5,14 @@ import { connect } from "react-redux";
 import { LeaderBoardLayout, GameLayout } from "./layouts";
 
 // Types
-import { Styles, State, Winner, Difficulty, Mode } from "../typings";
+import {
+  Styles,
+  State,
+  Winner,
+  Difficulty,
+  Mode,
+  DifficultyItem,
+} from "../typings";
 
 // Selectors
 import { winners$, gameSettings$, difficulty$ } from "../redux/selectors";
@@ -22,7 +29,7 @@ const styles: Styles = {
 export interface Props {
   winners: Winner[];
   gameSettings: Difficulty;
-  difficulty: Mode;
+  difficulty: DifficultyItem;
 }
 
 const Main = (props: Props) => {
