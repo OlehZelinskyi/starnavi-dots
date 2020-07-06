@@ -20,20 +20,26 @@ import {
     USERNAME
 } from "../constants";
 
+// Utils
+import { createSelector } from "reselect";
+
 // Data selectors
-export const winners$ = (state: State) => state[DATA_PREFIX][WINNERS];
-export const gameSettings$ = (state: State) => state[DATA_PREFIX][GAME_SETTINGS];
+export const dataState$ = (state: State) => state[DATA_PREFIX]
+export const winners$ = createSelector([dataState$], dataState => dataState[WINNERS])
+export const gameSettings$ = createSelector([dataState$], dataState => dataState[GAME_SETTINGS])
 
 // Settings selectors
-export const selectedOption$ = (state: State) => state[SETTINGS_PREFIX][SELECTED_OPTION];
-export const difficulty$ = (state: State) => state[SETTINGS_PREFIX][DIFFICULTY];
-export const username$ = (state: State) => state[SETTINGS_PREFIX][USERNAME]
+export const settingsState$ = (state: State) => state[SETTINGS_PREFIX]
+export const selectedOption$ = createSelector([settingsState$], settingsState => settingsState[SELECTED_OPTION])
+export const difficulty$ = createSelector([settingsState$], settingsState => settingsState[DIFFICULTY])
+export const username$ = createSelector([settingsState$], settingsState => settingsState[USERNAME])
 
 // Game selectors
-export const gameOn$ = (state: State) => state[GAME_PREFIX][GAME_ON];
-export const fieldItems$ = (state: State) => state[GAME_PREFIX][FIELD_ITEMS]
-export const fieldsCount$ = (state: State) => state[GAME_PREFIX][STATISTIC][FIELDS_COUNT]
+export const gameState$ = (state: State) => state[GAME_PREFIX]
+export const gameOn$ = createSelector([gameState$], gameState => gameState[GAME_ON])
+export const fieldItems$ = createSelector([gameState$], gameState => gameState[FIELD_ITEMS])
+export const fieldsCount$ = createSelector([gameState$], gameState => gameState[STATISTIC][FIELDS_COUNT])
 export const playerFieldsCount$ = (state: State, player: string) => state[GAME_PREFIX][STATISTIC][player]
-export const btnName$ = (state: State) => state[GAME_PREFIX][BTN_NAME]
-export const gameWinner$ = (state: State) => state[GAME_PREFIX][GAME_WINNER]
+export const btnName$ = createSelector([gameState$], gameState => gameState[BTN_NAME])
+export const gameWinner$ = createSelector([gameState$], gameState => gameState[GAME_WINNER])
 export const fieldByIndex$ = (state: State, index: number) => state[GAME_PREFIX][FIELD_ITEMS][index][WINNER]

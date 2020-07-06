@@ -11,7 +11,7 @@ import {
 import toNormalCase from "../../utils/toNormalCase";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { selectedOption$, gameOn$, btnName$ } from "../../redux/selectors";
+import { gameOn$, btnName$ } from "../../redux/selectors";
 import { setDifficulty, setUsername, startGame } from "../../redux/actions";
 import Input from "../Input";
 import Button from "../Button";

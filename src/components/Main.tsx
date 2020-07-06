@@ -10,7 +10,6 @@ import {
   State,
   Winner,
   Difficulty,
-  Mode,
   DifficultyItem,
 } from "../typings";
 
