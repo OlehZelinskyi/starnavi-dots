@@ -2,10 +2,7 @@
 import { fork } from "redux-saga/effects";
 
 // Sagas
-import fetchData from "./redux/sagas/fetchData";
-import { watchStartGame } from "./redux/sagas/startGame";
-import watchPaintField from "./redux/sagas/paintField";
-import watchFinishGame from "./redux/sagas/finishGame";
+import { fetchData, watchFinishGame, watchPaintField, watchStartGame } from "./redux/sagas/";
 
 export default function* rootSaga() {
   yield fork(fetchData, "winners");

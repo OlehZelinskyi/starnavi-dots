@@ -1,6 +1,13 @@
+// Effects
 import { takeLatest, put } from "redux-saga/effects";
+
+// Constants
 import { PAINT_FIELD } from "../constants";
+
+// Types
 import { AnyAction } from "redux";
+
+// Actions
 import { winner } from "../actions";
 
 export default function* watchPaintField() {

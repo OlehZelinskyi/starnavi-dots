@@ -1,0 +1,5 @@
+export { default as fetchData } from './fetchData'
+export { default as watchFinishGame } from './finishGame'
+export { default as watchPaintField } from './paintField'
+export { default as postData } from './postData'
+export { default as watchStartGame } from './startGame'

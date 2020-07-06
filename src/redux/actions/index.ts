@@ -1,4 +1,7 @@
+// Types
 import { Winner, Difficulty, DifficultyItem } from "../../typings";
+
+// Constants
 import {
   RECEIVE_DATA,
   SET_USERNAME,

@@ -18,7 +18,7 @@ import {
 // Actions
 import { winner, activate, finishGame, resetState } from "../actions";
 
-export function* watchStartGame() {
+export default function* watchStartGame() {
   yield takeLatest(START_GAME, handleStartGame);
 }
 

@@ -1,8 +1,17 @@
+// Effects
 import { takeEvery } from "redux-saga/effects";
+
+// Constants
 import { FINISH_GAME } from "../constants";
+
+// Types
 import { AnyAction } from "redux";
+
+// Sagas
 import postData from "./postData";
-import getFormattedDate from "../../utils/getFormattedDate";
+
+// Utils
+import { getFormattedDate } from "../../utils";
 
 export default function* watchFinishGame() {
   yield takeEvery(FINISH_GAME, handleFinishGame);
