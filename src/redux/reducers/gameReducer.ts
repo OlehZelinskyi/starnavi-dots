@@ -17,7 +17,7 @@ import {
 } from "../constants";
 
 // Types
-import { State } from "../../typings";
+import { State } from "@typings";
 
 const initialState: State = {
   [GAME_ON]: false,

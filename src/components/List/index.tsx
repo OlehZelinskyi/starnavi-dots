@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 
 // Types
-import { Winner } from "../../typings";
+import { Winner } from "@typings";
 
 // Components
 import ListItem from "./ListItem";

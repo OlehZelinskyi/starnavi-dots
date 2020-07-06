@@ -1,12 +1,12 @@
 import React from "react";
 
 // Types
-import { Styles, Difficulty, Mode, DifficultyItem } from "../../typings";
+import { Styles, Difficulty, DifficultyItem } from "@typings";
 
 // Components
-import Settings from "../Settings";
-import WinnerMessage from "../WinnerMessage";
-import GameField from "../GameField";
+import Settings from "@components/Settings";
+import WinnerMessage from "@components/WinnerMessage";
+import GameField from "@components/GameField";
 
 // Styles
 const styles: Styles = {

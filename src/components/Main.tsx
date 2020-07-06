@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 import { LeaderBoardLayout, GameLayout } from "./layouts";
 
 // Types
-import { Styles, State, Winner, Difficulty, DifficultyItem } from "../typings";
+import { Styles, State, Winner, Difficulty, DifficultyItem } from "@typings";
 
 // Selectors
-import { winners$, gameSettings$, difficulty$ } from "../redux/selectors";
+import { winners$, gameSettings$, difficulty$ } from "@redux/selectors";
 
 // Styles
 const styles: Styles = {

@@ -11,7 +11,7 @@ import { AnyAction } from "redux";
 import postData from "./postData";
 
 // Utils
-import { getFormattedDate } from "../../utils";
+import { getFormattedDate } from "@utils";
 
 export default function* watchFinishGame() {
   yield takeEvery(FINISH_GAME, handleFinishGame);

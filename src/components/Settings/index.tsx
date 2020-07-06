@@ -2,8 +2,8 @@ import React, { PureComponent, ChangeEvent } from "react";
 
 // Components
 import Select from "react-select";
-import Input from "../Input";
-import Button from "../Button";
+import Input from "@components/Input";
+import Button from "@components/Button";
 
 // Types
 import {
@@ -13,18 +13,18 @@ import {
   Mode,
   Styles,
   DifficultyItem,
-} from "../../typings";
+} from "@typings";
 import { Dispatch } from "redux";
 
 // Utils
-import { toNormalCase } from "../../utils";
+import { toNormalCase } from "@utils";
 import { connect } from "react-redux";
 
 // Selectors
-import { gameOn$, btnName$ } from "../../redux/selectors";
+import { gameOn$, btnName$ } from "@redux/selectors";
 
 // Actions
-import { setDifficulty, setUsername, startGame } from "../../redux/actions";
+import { setDifficulty, setUsername, startGame } from "@redux/actions";
 
 export interface Props {
   gameSettings: Difficulty;

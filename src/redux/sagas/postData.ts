@@ -8,7 +8,7 @@ import { postApi } from "../api";
 import fetchData from "./fetchData";
 
 // Types
-import { Winner } from "../../typings";
+import { Winner } from "@typings";
 
 export default function* postData(endPoint: string, data: Winner) {
   yield call(postApi, endPoint, data);

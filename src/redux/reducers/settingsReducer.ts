@@ -1,5 +1,5 @@
 // Types
-import { State } from "../../typings";
+import { State } from "@typings";
 import { AnyAction } from "redux";
 
 // Constants

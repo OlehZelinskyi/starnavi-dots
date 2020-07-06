@@ -5,13 +5,18 @@ module.exports = {
   mode: "development",
   entry: path.join(__dirname, "src", "index.tsx"),
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+    alias: {
+      "@components": path.resolve(__dirname, "src", "components"),
+      "@typings": path.resolve(__dirname, "src", "typings"),
+      "@redux": path.resolve(__dirname, "src", "redux"),
+      "@utils": path.resolve(__dirname, "src", "utils"),
+    },
   },
   devServer: {
     compress: false,
     port: 8080,
   },
-  devtool: "source-map",
   module: {
     rules: [
       {

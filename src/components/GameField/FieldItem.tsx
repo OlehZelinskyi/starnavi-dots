@@ -1,7 +1,7 @@
 import React from "react";
 
 // Types
-import { Styles } from "../../typings";
+import { Styles } from "@typings";
 
 export interface Props {
   clickable: boolean;

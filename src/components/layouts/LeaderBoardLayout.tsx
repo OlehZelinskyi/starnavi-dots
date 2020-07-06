@@ -1,10 +1,10 @@
 import React from "react";
 
 // Types
-import { Styles, Winner } from "../../typings";
+import { Styles, Winner } from "@typings";
 
 // Components
-import LeaderBoard from "../LeaderBoard";
+import LeaderBoard from "@components/LeaderBoard";
 
 // Styles
 const styles: Styles = {

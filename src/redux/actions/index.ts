@@ -1,5 +1,5 @@
 // Types
-import { Winner, Difficulty, DifficultyItem } from "../../typings";
+import { Winner, Difficulty, DifficultyItem } from "@typings";
 
 // Constants
 import {
@@ -12,7 +12,7 @@ import {
   FINISH_GAME,
   RESET_STATE,
   PAINT_FIELD,
-} from "../constants";
+} from "@redux/constants";
 
 export const receiveData = (type: string, data: Winner[] | Difficulty) => ({
   type: RECEIVE_DATA,

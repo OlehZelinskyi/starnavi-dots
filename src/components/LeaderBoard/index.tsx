@@ -1,11 +1,11 @@
 import React from "react";
 
 // Types
-import { Winner, Styles } from "../../typings";
+import { Winner, Styles } from "@typings";
 
 // Components
-import Heading from "../Heading";
-import List from "../List";
+import Heading from "@components/Heading";
+import List from "@components/List";
 
 const styles: Styles = {
   centering: {

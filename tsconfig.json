@@ -8,6 +8,13 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "lib": ["DOM", "ES2019"]
+    "lib": ["DOM", "ES2019"],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@typings": ["./src/typings"],
+      "@utils": ["./src/utils"]
+    }
   }
 }
