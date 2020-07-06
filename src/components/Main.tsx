@@ -1,17 +1,13 @@
 import React from "react";
+
+// Utils
 import { connect } from "react-redux";
 
 // Components
 import { LeaderBoardLayout, GameLayout } from "./layouts";
 
 // Types
-import {
-  Styles,
-  State,
-  Winner,
-  Difficulty,
-  DifficultyItem,
-} from "../typings";
+import { Styles, State, Winner, Difficulty, DifficultyItem } from "../typings";
 
 // Selectors
 import { winners$, gameSettings$, difficulty$ } from "../redux/selectors";

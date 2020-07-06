@@ -13,9 +13,8 @@ import {
   FINISH_GAME,
   GAME_WINNER,
   BTN_NAME,
-  RESET_STATE
+  RESET_STATE,
 } from "../constants";
-
 
 // Types
 import { State } from "../../typings";
@@ -25,7 +24,7 @@ const initialState: State = {
   [FIELD_ITEMS]: null,
   [STATISTIC]: null,
   [GAME_WINNER]: null,
-  [BTN_NAME]: 'play'
+  [BTN_NAME]: "play",
 };
 
 export default (state = initialState, action: AnyAction) => {
@@ -41,7 +40,7 @@ export default (state = initialState, action: AnyAction) => {
         ...state,
         [GAME_ON]: false,
         [GAME_WINNER]: payload,
-        [BTN_NAME]: 'play again'
+        [BTN_NAME]: "play again",
       };
     case SET_DIFFICULTY:
       const { field } = payload;
@@ -51,11 +50,11 @@ export default (state = initialState, action: AnyAction) => {
         [STATISTIC]: {
           fieldsCount: field ** 2,
           computer: 0,
-          user: 0
-        }
+          user: 0,
+        },
       };
     case FIELD_WINNER:
-      const { fieldIndex, fieldWinner } = payload
+      const { fieldIndex, fieldWinner } = payload;
       return {
         ...state,
         [FIELD_ITEMS]: {
@@ -65,18 +64,18 @@ export default (state = initialState, action: AnyAction) => {
             clickable: false,
             state: {
               pending: false,
-              color: fieldWinner === 'computer' ? 'red' : 'green',
+              color: fieldWinner === "computer" ? "red" : "green",
             },
             winner: fieldWinner,
-          }
+          },
         },
         [STATISTIC]: {
           ...state[STATISTIC],
-          [fieldWinner]: state[STATISTIC][fieldWinner] + 1
-        }
-      }
+          [fieldWinner]: state[STATISTIC][fieldWinner] + 1,
+        },
+      };
     case ACTIVATE:
-      const { index } = payload
+      const { index } = payload;
       return {
         ...state,
         [FIELD_ITEMS]: {
@@ -86,11 +85,11 @@ export default (state = initialState, action: AnyAction) => {
             clickable: true,
             state: {
               pending: true,
-              color: 'blue',
+              color: "blue",
             },
-          }
-        }
-      }
+          },
+        },
+      };
     case RESET_STATE:
       return {
         ...state,
@@ -99,8 +98,8 @@ export default (state = initialState, action: AnyAction) => {
         [STATISTIC]: {
           fieldsCount: payload ** 2,
           computer: 0,
-          user: 0
-        }
+          user: 0,
+        },
       };
 
     default:

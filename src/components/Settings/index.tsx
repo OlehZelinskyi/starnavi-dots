@@ -95,7 +95,7 @@ class Settings extends PureComponent<Props, State> {
         />
         <Button
           disabled={gameOn || !username.length || !selectedOption}
-          label={btnName}
+          label={btnName.toUpperCase()}
           type={"button"}
           handleClick={this.handleClick}
           styles={button}

@@ -2,10 +2,18 @@ import React, { PureComponent } from "react";
 
 // Components
 import FieldItem from "./FieldItem";
+
+// Types
 import { Styles, State, DifficultyItem, FieldItemConfig } from "../../typings";
 import { Dispatch } from "redux";
+
+// Selectors
 import { fieldItems$ } from "../../redux/selectors";
+
+// Utils
 import { connect } from "react-redux";
+
+// Actions
 import { paintField } from "../../redux/actions";
 
 export interface Props {

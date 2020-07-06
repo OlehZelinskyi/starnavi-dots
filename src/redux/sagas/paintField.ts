@@ -4,11 +4,11 @@ import { AnyAction } from "redux";
 import { winner } from "../actions";
 
 export default function* watchPaintField() {
-    yield takeLatest(PAINT_FIELD, handlePaintField)
+  yield takeLatest(PAINT_FIELD, handlePaintField);
 }
 
 export function* handlePaintField(action: AnyAction) {
-    const { payload: index } = action
+  const { payload: index } = action;
 
-    yield put(winner('user', index))
+  yield put(winner("user", index));
 }
