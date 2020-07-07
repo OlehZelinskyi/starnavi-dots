@@ -133,6 +133,7 @@ class Settings extends PureComponent<Props, State> {
           handleChange={this.handleChange}
           handleBlur={this.handleBlur}
           disabled={gameOn}
+          lengthRestriction={15}
           styles={{ ...input, ...offseting }}
         />
         <Button

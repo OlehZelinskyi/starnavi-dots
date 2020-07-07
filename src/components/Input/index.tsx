@@ -9,6 +9,7 @@ export interface Props {
   handleBlur: () => void;
   disabled: boolean;
   styles: CSSProperties;
+  lengthRestriction: number;
 }
 
 const Input = (props: Props) => {
@@ -21,6 +22,7 @@ const Input = (props: Props) => {
     handleBlur,
     disabled,
     styles,
+    lengthRestriction,
   } = props;
   return (
     <input
@@ -32,6 +34,7 @@ const Input = (props: Props) => {
       onChange={handleChange}
       onBlur={handleBlur}
       style={styles}
+      maxLength={lengthRestriction}
     />
   );
 };
