@@ -15,7 +15,7 @@ export default function getFormattedDate() {
   const month = getFormattedMonth(dateInMs);
   const year = dateInMs.getFullYear();
 
-  return `${hours}:${minutes} ${day} ${month} ${year}`;
+  return `${hours}:${minutes}; ${day} ${month} ${year}`;
 }
 
 export const getFormattedMonth = (ms: Date) => {

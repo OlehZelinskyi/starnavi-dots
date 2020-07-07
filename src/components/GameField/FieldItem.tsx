@@ -30,10 +30,13 @@ const FieldItem = (props: Props) => {
     index,
     handleClick,
   } = props;
-
+  const fieldStyle =
+    clickable && pending
+      ? { ...fieldItem, backgroundColor: color, cursor: "pointer" }
+      : { ...fieldItem, backgroundColor: color };
   return (
     <div
-      style={{ ...fieldItem, backgroundColor: color }}
+      style={fieldStyle}
       onClick={clickable && pending ? () => handleClick(index) : () => {}}
     ></div>
   );

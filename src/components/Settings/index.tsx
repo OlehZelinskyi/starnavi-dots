@@ -13,6 +13,7 @@ import {
   Mode,
   Styles,
   DifficultyItem,
+  anyObject,
 } from "@typings";
 import { Dispatch } from "redux";
 
@@ -44,6 +45,8 @@ const styles: Styles = {
   settingsWrapper: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
+    cursor: "pointer",
   },
   input: {
     padding: "5px 10px",
@@ -52,19 +55,44 @@ const styles: Styles = {
     border: "none",
     fontFamily: "Arial",
     color: "#777",
-    marginRight: 10,
+    height: 28,
+    borderRadius: 3,
   },
   button: {
-    background: "#555",
+    background: "#777",
+    cursor: "pointer",
     color: "#fff",
     borderRadius: "3px",
     padding: "5px 20px",
     border: "none",
+    height: 28,
+    boxSizing: "content-box",
   },
   selectWrapper: {
     width: 200,
-    marginRight: 10,
   },
+  offseting: {
+    margin: "10px 10px 0 0",
+  },
+};
+
+const selectStyles = {
+  control: (provided: anyObject) => {
+    return {
+      ...provided,
+      backgroundColor: "#ddd",
+      border: "none",
+      cursor: "pointer",
+      fontFamily: "Arial, serif",
+      fontSize: 14,
+    };
+  },
+  menu: (provided: anyObject) => ({
+    ...provided,
+    backgroundColor: "#ddd",
+    color: "#777",
+    fontFamily: "Arial, serif",
+  }),
 };
 
 class Settings extends PureComponent<Props, State> {
@@ -80,16 +108,18 @@ class Settings extends PureComponent<Props, State> {
   render() {
     const { gameOn, btnName } = this.props;
     const { username, selectedOption } = this.state;
-    const { settingsWrapper, input, selectWrapper, button } = styles;
+    const { settingsWrapper, input, selectWrapper, button, offseting } = styles;
 
     return (
       <div style={settingsWrapper}>
-        <div style={selectWrapper}>
+        <div style={{ ...selectWrapper, ...offseting }}>
           <Select
             value={selectedOption}
             onChange={this.handleSelect}
             options={this.getOptions()}
             isDisabled={gameOn}
+            styles={selectStyles}
+            placeholder={"Pick game mode"}
           />
         </div>
 
@@ -101,14 +131,14 @@ class Settings extends PureComponent<Props, State> {
           handleChange={this.handleChange}
           handleBlur={this.handleBlur}
           disabled={gameOn}
-          styles={input}
+          styles={{ ...input, ...offseting }}
         />
         <Button
           disabled={gameOn || !username.length || !selectedOption}
           label={btnName.toUpperCase()}
           type={"button"}
           handleClick={this.handleClick}
-          styles={button}
+          styles={{ ...button, ...offseting }}
         />
       </div>
     );

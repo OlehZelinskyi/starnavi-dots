@@ -23,6 +23,8 @@ const styles: Styles = {
     listStyle: "none",
     padding: 0,
     fontSize: 18,
+    overflow: "auto",
+    maxHeight: 440,
   },
   listItem: {
     display: "flex",

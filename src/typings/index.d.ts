@@ -40,3 +40,7 @@ export interface FieldItemConfig {
     index: number;
   };
 }
+
+export type anyObject = {
+  [key: string]: any
+}

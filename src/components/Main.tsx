@@ -10,7 +10,12 @@ import { LeaderBoardLayout, GameLayout } from "./layouts";
 import { Styles, State, Winner, Difficulty, DifficultyItem } from "@typings";
 
 // Selectors
-import { winners$, gameSettings$, difficulty$ } from "@redux/selectors";
+import {
+  winners$,
+  gameSettings$,
+  difficulty$,
+  gameWinner$,
+} from "@redux/selectors";
 
 // Styles
 const styles: Styles = {
@@ -25,11 +30,12 @@ export interface Props {
   winners: Winner[];
   gameSettings: Difficulty;
   difficulty: DifficultyItem;
+  gameWinner: string;
 }
 
 const Main = (props: Props) => {
   const { container } = styles;
-  const { winners, gameSettings, difficulty } = props;
+  const { winners, gameSettings, difficulty, gameWinner } = props;
 
   if (!winners || !gameSettings) {
     return <div>Loading...</div>;
@@ -37,7 +43,11 @@ const Main = (props: Props) => {
 
   return (
     <div style={container}>
-      <GameLayout settings={gameSettings} difficulty={difficulty} />
+      <GameLayout
+        settings={gameSettings}
+        difficulty={difficulty}
+        gameWinner={gameWinner}
+      />
       <LeaderBoardLayout winners={winners} boardHeading={"Leader Board"} />
     </div>
   );
@@ -47,6 +57,7 @@ const mapStateToProps = (state: State) => ({
   winners: winners$(state),
   difficulty: difficulty$(state),
   gameSettings: gameSettings$(state),
+  gameWinner: gameWinner$(state),
 });
 
 export default connect(mapStateToProps)(Main);

@@ -26,6 +26,7 @@ const styles: Styles = {
   fieldContainer: {
     display: "flex",
     flexWrap: "wrap",
+    margin: "2rem auto",
   },
 };
 

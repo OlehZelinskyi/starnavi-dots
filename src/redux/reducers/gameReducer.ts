@@ -64,7 +64,7 @@ export default (state = initialState, action: AnyAction) => {
             clickable: false,
             state: {
               pending: false,
-              color: fieldWinner === "computer" ? "red" : "green",
+              color: fieldWinner === "computer" ? "#d44e4e" : "#5bda6f",
             },
             winner: fieldWinner,
           },
@@ -85,7 +85,7 @@ export default (state = initialState, action: AnyAction) => {
             clickable: true,
             state: {
               pending: true,
-              color: "blue",
+              color: "#41d6c7",
             },
           },
         },

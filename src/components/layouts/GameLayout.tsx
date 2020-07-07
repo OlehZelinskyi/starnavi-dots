@@ -5,7 +5,7 @@ import { Styles, Difficulty, DifficultyItem } from "@typings";
 
 // Components
 import Settings from "@components/Settings";
-import WinnerMessage from "@components/WinnerMessage";
+import Message from "@components/Message";
 import GameField from "@components/GameField";
 
 // Styles
@@ -14,26 +14,32 @@ const styles: Styles = {
     flexGrow: 1,
     border: "2px solid #ddd",
   },
+  centering: {
+    margin: "2rem 1rem",
+  },
 };
 
 export interface Props {
   settings: Difficulty;
   difficulty: DifficultyItem;
+  gameWinner: string;
 }
 
 const GameLayout = (props: Props) => {
-  const { container } = styles;
-  const { settings, difficulty } = props;
+  const { container, centering } = styles;
+  const { settings, difficulty, gameWinner } = props;
 
   return (
     <div style={container}>
-      <Settings gameSettings={settings} />
-      {false && <WinnerMessage msg={"Someone win"} />}
-      {difficulty ? (
-        <GameField selectedDifficulty={difficulty} />
-      ) : (
-        <div>{"Please select difficulty mode!"}</div>
-      )}
+      <div style={centering}>
+        <Settings gameSettings={settings} />
+        {gameWinner && <Message msg={`Winner is ${gameWinner}!`} />}
+        {difficulty ? (
+          <GameField selectedDifficulty={difficulty} />
+        ) : (
+          <Message msg={"Please select difficulty mode!"} />
+        )}
+      </div>
     </div>
   );
 };
