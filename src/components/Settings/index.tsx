@@ -46,7 +46,6 @@ const styles: Styles = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    cursor: "pointer",
   },
   input: {
     padding: "5px 10px",
@@ -110,9 +109,12 @@ class Settings extends PureComponent<Props, State> {
     const { username, selectedOption } = this.state;
     const { settingsWrapper, input, selectWrapper, button, offseting } = styles;
 
+    const selectWrapperStyles = gameOn
+      ? { ...selectWrapper, ...offseting, cursor: "not-allowed" }
+      : { ...selectWrapper, ...offseting };
     return (
       <div style={settingsWrapper}>
-        <div style={{ ...selectWrapper, ...offseting }}>
+        <div style={selectWrapperStyles}>
           <Select
             value={selectedOption}
             onChange={this.handleSelect}

@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+
+button:disabled,
+input:disabled {
+  cursor: not-allowed !important;
+}
+
+input:disabled {
+  background-color: #bbb !important;
+}

@@ -21,7 +21,8 @@ import {
 const styles: Styles = {
   container: {
     display: "flex",
-    maxWidth: 1140,
+    maxWidth: "100vw",
+    height: "100vh",
     flexWrap: "wrap",
   },
 };
